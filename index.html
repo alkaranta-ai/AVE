@@ -1040,6 +1040,19 @@
     color: var(--text-dark) !important;
     font-weight: 600 !important;
 }
+    /* Corrección total del footer */
+footer, .footer, .footer-inner {
+    background: #c8c0b7 !important; /* Un color sólido y neutro, sin gradientes ni luces */
+    background-image: none !important; /* Elimina cualquier imagen de fondo o efecto de luz */
+    color: #3a3228 !important; /* Texto oscuro para máxima legibilidad */
+}
+
+/* Asegurar que los elementos internos también cambien */
+.footer *, .footer-inner *, footer * {
+    background: transparent !important; /* Elimina fondos transparentes con brillos */
+    color: #3a3228 !important;
+    text-shadow: none !important; /* Quita sombras que puedan ensuciar el texto */
+}
   </style>
 </head>
 <body>
