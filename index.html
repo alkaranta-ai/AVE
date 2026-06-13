@@ -1316,24 +1316,24 @@
       <div class="booking-form fade-in">
         <h3>Reservar cita</h3>
         <p class="form-sub">Completa el formulario y te contactaremos a la brevedad</p>
-        <form onsubmit="submitForm(event)">
+        <form action="[https://www.formbackend.com/f/8e5ca30f800d4297](https://www.formbackend.com/f/8e5ca30f800d4297)" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label>Nombre</label>
-              <input type="text" placeholder="Tu nombre" required />
+              <input type="text" name="nombre" placeholder="Tu nombre" required />
             </div>
             <div class="form-group">
               <label>Apellido</label>
-              <input type="text" placeholder="Tu apellido" />
+              <input type="text" name="apellido" placeholder="Tu apellido" />
             </div>
           </div>
           <div class="form-group">
             <label>WhatsApp / Teléfono</label>
-            <input type="tel" placeholder="+54 1 XXX XXX XXXX" required />
+            <input type="tel" name="telefono" placeholder="+54 1 XXX XXX XXXX" required />
           </div>
           <div class="form-group">
             <label>Servicio de interés</label>
-            <select required>
+            <select name="servicio" required>
               <option value="" disabled selected>Selecciona un servicio</option>
               <option>Facial personalizado</option>
               <option>Diseño de cejas</option>
@@ -1346,11 +1346,11 @@
           </div>
           <div class="form-group">
             <label>Fecha preferida</label>
-            <input type="date" />
+            <input type="date" name="fecha" required />
           </div>
           <div class="form-group">
             <label>Mensaje (opcional)</label>
-            <textarea placeholder="¿Algo que deba saber antes de tu cita?"></textarea>
+            <textarea name="mensaje" placeholder="¿Algo que deba saber antes de tu cita?"></textarea>
           </div>
           <button type="submit" class="form-submit">Enviar solicitud</button>
         </form>
@@ -1428,18 +1428,6 @@
         : 'rgba(255,255,255,0.55)';
     });
 
-    /* ── Form submit ── */
-    function submitForm(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = '¡Solicitud enviada! ✓';
-      btn.style.background = 'linear-gradient(135deg, #a8b87a, #7a9a4a)';
-      setTimeout(() => {
-        btn.textContent = 'Enviar solicitud';
-        btn.style.background = '';
-        e.target.reset();
-      }, 3500);
-    }
   </script>
 
 </body>
