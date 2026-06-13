@@ -1,61 +1,1447 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            background-color: #fcfbf9; /* Un tono crema más fino */
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #5b5f48;
-            margin: 0;
-            text-align: center;
-        }
-        .hero {
-            padding: 60px 20px;
-        }
-        .logo-img {
-            width: 120px; /* Logo más pequeño y delicado */
-            margin-bottom: 20px;
-        }
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .cta-btn {
-            background-color: #8a8d79;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .cta-btn:hover { background-color: #5b5f48; }
-        
-        /* Estilo de lista más limpio */
-        ul { list-style: none; padding: 0; }
-        li { margin: 15px 0; font-size: 1.1rem; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVE — Andrea Veronica Elizondo | Estética & Spa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── LIQUID GLASS PALETTE ───────────────────────── */
+    :root {
+      --gold:       #b8a97a;
+      --gold-light: #d4c89e;
+      --gold-pale:  #ede8d8;
+      --ivory:      #faf8f4;
+      --white:      #ffffff;
+      --smoke:      #f2ede4;
+      --text-dark:  #3a3228;
+      --text-mid:   #6b5f4e;
+      --text-light: #9e9182;
+
+      /* Liquid glass core */
+      --glass-bg:        rgba(255,255,255,0.55);
+      --glass-bg-strong: rgba(255,255,255,0.72);
+      --glass-border:    rgba(184,169,122,0.30);
+      --glass-shadow:    0 8px 32px rgba(184,169,122,0.12), 0 1px 0 rgba(255,255,255,0.8) inset;
+      --blur:            blur(18px);
+
+      --radius-sm: 12px;
+      --radius-md: 24px;
+      --radius-lg: 40px;
+      --radius-xl: 60px;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'Jost', sans-serif;
+    }
+
+    /* ── BASE ───────────────────────────────────────── */
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--ivory);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── AMBIENT BACKGROUND ─────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(212,200,158,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 85%, rgba(184,169,122,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(250,248,244,1) 0%, rgba(237,232,216,0.6) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border-bottom: 1px solid var(--glass-border);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg-strong);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      padding: 0.6rem 1.4rem;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .nav-cta:hover {
+      background: rgba(184,169,122,0.15);
+      border-color: var(--gold);
+    }
+
+    /* ── HAMBURGER ──────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(250,248,244,0.97);
+      backdrop-filter: var(--blur);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--gold);
+      cursor: pointer;
+    }
+
+    /* ── SECTIONS BASE ──────────────────────────────── */
+    section { position: relative; z-index: 1; }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      padding: 0.45rem 1.2rem;
+      border-radius: 100px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-logo {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 4px 24px rgba(184,169,122,0.22));
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      max-width: 460px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin: 0 auto 3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(184,169,122,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,169,122,0.45);
+    }
+
+    .btn-ghost {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      padding: 0.9rem 2.2rem;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(184,169,122,0.12);
+      border-color: var(--gold);
+    }
+
+    .hero-scroll {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeUp 2s ease 1s both;
+    }
+
+    .hero-scroll .line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+      animation: grow 1.5s ease 1.5s both;
+    }
+
+    @keyframes grow {
+      from { height: 0; opacity: 0; }
+      to   { height: 40px; opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── GLASS CARD ─────────────────────────────────── */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: var(--radius-md);
+    }
+
+    /* ── SECTION HEADER ─────────────────────────────── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .section-header h2 em { font-style: italic; color: var(--gold); }
+
+    .section-header p {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────────── */
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 1.5rem auto 0;
+    }
+
+    /* ── SOBRE AVE ───────────────────────────────────── */
+    #sobre {
+      padding: 7rem 2rem;
+    }
+
+    .sobre-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-visual {
+      position: relative;
+    }
+
+    .sobre-img-wrap {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--gold-pale), var(--smoke));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sobre-placeholder {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gold-light);
+      user-select: none;
+    }
+
+    .sobre-badge-float {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--glass-bg-strong);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.8rem;
+      text-align: center;
+    }
+
+    .sobre-badge-float .num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .sobre-badge-float .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .sobre-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .sobre-text h2 em { font-style: italic; color: var(--gold); }
+
+    .sobre-text p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+      margin-bottom: 1.2rem;
+    }
+
+    .sobre-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.8rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+    }
+
+    /* ── SERVICIOS ───────────────────────────────────── */
+    #servicios {
+      padding: 7rem 2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(184,169,122,0.06) 50%, transparent 100%);
+    }
+
+    .servicios-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .servicio-card {
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-md);
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .servicio-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(184,169,122,0.18), 0 1px 0 rgba(255,255,255,0.8) inset;
+    }
+
+    .servicio-icon {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .servicio-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .servicio-card p {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .servicio-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .servicio-items li {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .servicio-items li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold-light);
+    }
+
+    /* ── EXPERIENCIA / RITUAL ────────────────────────── */
+    #ritual {
+      padding: 7rem 2rem;
+    }
+
+    .ritual-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ritual-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .ritual-step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-md);
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      position: relative;
+    }
+
+    .ritual-step::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -0.75rem;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--glass-border);
+    }
+
+    .ritual-step:last-child::after { display: none; }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold-pale);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .ritual-step h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .ritual-step p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* ── TESTIMONIOS ─────────────────────────────────── */
+    #testimonios {
+      padding: 7rem 2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(184,169,122,0.05) 50%, transparent 100%);
+    }
+
+    .testimonios-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonio-card {
+      padding: 2rem 1.75rem;
+      border-radius: var(--radius-md);
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .testimonio-card blockquote {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-dark);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonio-author {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── GALERIA ─────────────────────────────────────── */
+    #galeria {
+      padding: 7rem 2rem;
+    }
+
+    .galeria-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+
+    .galeria-item {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--gold-pale), var(--smoke));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      font-style: italic;
+      position: relative;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .galeria-item.tall { aspect-ratio: 3/4; grid-row: span 2; }
+
+    /* ── BOOKING / CONTACTO ──────────────────────────── */
+    #contacto {
+      padding: 7rem 2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(184,169,122,0.06) 50%, transparent 100%);
+    }
+
+    .contacto-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contacto-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .contacto-info h2 em { font-style: italic; color: var(--gold); }
+
+    .contacto-info p {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+    }
+
+    .info-items { display: flex; flex-direction: column; gap: 1rem; }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .info-text {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .info-text strong {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+      font-weight: 400;
+    }
+
+    /* ── FORM ────────────────────────────────────────── */
+    .booking-form {
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      background: var(--glass-bg-strong);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+    }
+
+    .booking-form h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .booking-form .form-sub {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.85);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 0.9rem;
+      margin-top: 1rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(184,169,122,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,169,122,0.45);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--text-dark);
+      color: var(--text-light);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(184,169,122,0.15);
+    }
+
+    .footer-brand img {
+      height: 52px;
+      width: 52px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      filter: brightness(0.85);
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: rgba(184,169,122,0.6);
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col li a {
+      font-size: 0.82rem;
+      color: rgba(184,169,122,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col li a:hover { color: var(--gold); }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,169,122,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(184,169,122,0.6);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      font-size: 0.7rem;
+      color: rgba(184,169,122,0.35);
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .sobre-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .ritual-steps { grid-template-columns: 1fr 1fr; }
+      .ritual-step::after { display: none; }
+      .galeria-grid { grid-template-columns: 1fr 1fr; }
+      .galeria-item.tall { grid-row: span 1; aspect-ratio: 4/3; }
+      .contacto-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .ritual-steps { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .sobre-badge-float { right: 0; bottom: -1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, .fade-in { transition: none !important; animation: none !important; }
+    }
+  </style>
 </head>
 <body>
 
-    <section class="hero">
-        <img src="logo.png" class="logo-img" alt="Logo">
-        <h1>A.V.E.</h1>
-        <p>El equilibrio entre la salud de tu piel y tu bienestar integral.</p>
-        <br><br>
-        <a href="#contacto" class="cta-btn">Reservar Turno</a>
-    </section>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="AVE Logo" onerror="this.style.display='none'" />
+      <span class="nav-brand">AVE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre Mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#ritual">Ritual</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Reservar cita</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <section>
-        <h2 class="section-title">Nuestros Tratamientos</h2>
-        <ul>
-            <li>✨ Limpieza Profunda</li>
-            <li>✨ Rejuvenecimiento Facial</li>
-            <li>✨ Terapias de Bienestar</li>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" id="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#sobre" onclick="closeMobile()">Sobre Mí</a>
+    <a href="#servicios" onclick="closeMobile()">Servicios</a>
+    <a href="#ritual" onclick="closeMobile()">Ritual</a>
+    <a href="#galeria" onclick="closeMobile()">Galería</a>
+    <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-badge">Estética & Spa de Lujo</span>
+    <img src="logo.png" alt="AVE — Andrea Veronica Elizondo" class="hero-logo"
+         onerror="this.style.display='none'" />
+    <h1>Andrea <em>Veronica</em><br>Elizondo</h1>
+    <p class="hero-subtitle">Belleza · Bienestar · Ritual</p>
+    <p class="hero-desc">
+      Un espacio íntimo donde cada tratamiento es un ritual de cuidado personal,
+      diseñado para revelar tu mejor versión con productos de primera calidad y técnicas exclusivas.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Reservar mi cita</a>
+      <a href="#servicios" class="btn-ghost">Ver servicios</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="line"></div>
+      <span>Descubrir</span>
+    </div>
+  </section>
+
+  <!-- SOBRE AVE -->
+  <section id="sobre">
+    <div class="sobre-inner">
+      <div class="sobre-visual fade-in">
+        <div class="sobre-img-wrap">
+          <!-- Reemplaza con tu foto real: <img src="andrea.jpg" alt="Andrea Veronica Elizondo" /> -->
+          <span class="sobre-placeholder">AVE</span>
+        </div>
+        <div class="sobre-badge-float glass-card">
+          <span class="num">8+</span>
+          <span class="label">Años de experiencia</span>
+        </div>
+      </div>
+      <div class="sobre-text fade-in">
+        <span class="eyebrow">Mi historia</span>
+        <h2>Pasión por la <em>belleza</em> auténtica</h2>
+        <p>
+          Soy Andrea Veronica Elizondo, especialista en estética integral y bienestar.
+          Mi filosofía parte de una premisa simple: cada persona merece sentirse radiante
+          en su propia piel, con tratamientos personalizados que respetan su esencia.
+        </p>
+        <p>
+          Formada en las mejores escuelas de estética y constantemente actualizada
+          en las tendencias más innovadoras, ofrezco una experiencia que combina
+          ciencia, arte y el cuidado más profundo hacia cada clienta.
+        </p>
+        <div class="sobre-tags">
+          <span class="tag">Facial avanzado</span>
+          <span class="tag">Diseño de cejas</span>
+          <span class="tag">Tratamientos corporales</span>
+          <span class="tag">Micropigmentación</span>
+          <span class="tag">Spa & relajación</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="section-header fade-in">
+      <span class="eyebrow">Lo que ofrezco</span>
+      <h2>Servicios <em>exclusivos</em></h2>
+      <p>Cada tratamiento ha sido cuidadosamente diseñado para brindarte una experiencia única de bienestar y transformación.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio-card fade-in">
+        <span class="servicio-icon">✦</span>
+        <h3>Faciales</h3>
+        <p>Tratamientos faciales personalizados que limpian, nutren y regeneran tu piel con activos de alta concentración.</p>
+        <ul class="servicio-items">
+          <li>Limpieza profunda & hidratación</li>
+          <li>Facial antiedad con radiofrequencia</li>
+          <li>Mesoterapia facial</li>
+          <li>Peeling químico</li>
         </ul>
-    </section>
+      </div>
+      <div class="servicio-card fade-in">
+        <span class="servicio-icon">✦</span>
+        <h3>Diseño de Cejas</h3>
+        <p>Encuadramos tu mirada con técnicas de diseño y micropigmentación que realzan tu expresión natural.</p>
+        <ul class="servicio-items">
+          <li>Diseño personalizado</li>
+          <li>Henna & tintado</li>
+          <li>Micropigmentación pelo a pelo</li>
+          <li>Lifting de pestañas</li>
+        </ul>
+      </div>
+      <div class="servicio-card fade-in">
+        <span class="servicio-icon">✦</span>
+        <h3>Corporales</h3>
+        <p>Rituales de cuerpo completo que equilibran, moldean y restauran la vitalidad de tu piel desde adentro.</p>
+        <ul class="servicio-items">
+          <li>Envolturas minerales</li>
+          <li>Masaje de relajación profunda</li>
+          <li>Tratamiento reafirmante</li>
+          <li>Exfoliación corporal premium</li>
+        </ul>
+      </div>
+      <div class="servicio-card fade-in">
+        <span class="servicio-icon">✦</span>
+        <h3>Uñas & Manos</h3>
+        <p>Manicura y pedicura de lujo con acabados impecables y técnicas de cuidado profesional.</p>
+        <ul class="servicio-items">
+          <li>Manicura spa</li>
+          <li>Gelish & acrílico</li>
+          <li>Nail art personalizado</li>
+          <li>Pedicura terapéutica</li>
+        </ul>
+      </div>
+      <div class="servicio-card fade-in">
+        <span class="servicio-icon">✦</span>
+        <h3>Depilación</h3>
+        <p>Métodos de depilación suaves y efectivos adaptados a cada tipo de piel y zona del cuerpo.</p>
+        <ul class="servicio-items">
+          <li>Depilación con cera tibia</li>
+          <li>Depilación láser (aliada)</li>
+          <li>Cuidado post-depilación</li>
+        </ul>
+      </div>
+      <div class="servicio-card fade-in">
+        <span class="servicio-icon">✦</span>
+        <h3>Spa & Rituales</h3>
+        <p>Experiencias completas de bienestar que combinan varios tratamientos en una jornada de lujo total.</p>
+        <ul class="servicio-items">
+          <li>Ritual AVE signature</li>
+          <li>Spa de día (4 horas)</li>
+          <li>Gift cards & regalos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section id="ritual">
+    <div class="ritual-inner">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Tu experiencia</span>
+        <h2>El <em>ritual</em> AVE</h2>
+        <p>Desde tu primera llamada hasta que sales renovada, cada paso está pensado para que te sientas única.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="ritual-steps">
+        <div class="ritual-step fade-in">
+          <div class="step-num">01</div>
+          <h4>Consulta inicial</h4>
+          <p>Analizamos tu piel, objetivos y preferencias para diseñar tu tratamiento ideal.</p>
+        </div>
+        <div class="ritual-step fade-in">
+          <div class="step-num">02</div>
+          <h4>Bienvenida al espacio</h4>
+          <p>Un ambiente de calma total te recibe con aromas, música y una infusión especial.</p>
+        </div>
+        <div class="ritual-step fade-in">
+          <div class="step-num">03</div>
+          <h4>Tu tratamiento</h4>
+          <p>Técnicas exclusivas y productos premium aplicados con precisión y dedicación absoluta.</p>
+        </div>
+        <div class="ritual-step fade-in">
+          <div class="step-num">04</div>
+          <h4>Rutina personalizada</h4>
+          <p>Recibes una guía de cuidado en casa para prolongar los resultados de tu sesión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios">
+    <div class="section-header fade-in">
+      <span class="eyebrow">Lo que dicen</span>
+      <h2>Experiencias <em>reales</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonios-grid">
+      <div class="testimonio-card fade-in">
+        <div class="stars">★★★★★</div>
+        <blockquote>"El facial que me hizo Andrea fue transformador. Mi piel nunca había lucido tan radiante. ¡Volveré cada mes sin falta!"</blockquote>
+        <span class="testimonio-author">— Valentina M.</span>
+      </div>
+      <div class="testimonio-card fade-in">
+        <div class="stars">★★★★★</div>
+        <blockquote>"El ritual AVE fue la mejor experiencia de spa que he vivido. Te hacen sentir como una reina desde el momento en que llegas."</blockquote>
+        <span class="testimonio-author">— Sofía R.</span>
+      </div>
+      <div class="testimonio-card fade-in">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Mi diseño de cejas quedó perfecto. Andrea tiene un ojo artístico increíble y una atención al detalle que pocas tienen."</blockquote>
+        <span class="testimonio-author">— Camila P.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <div class="section-header fade-in">
+      <span class="eyebrow">Galería</span>
+      <h2>Nuestro <em>espacio</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="galeria-grid fade-in" style="max-width:1100px;margin:0 auto;">
+      <!-- Reemplaza los divs con <img src="foto.jpg" alt="descripción"> dentro de cada .galeria-item -->
+      <div class="galeria-item tall">Espacio principal</div>
+      <div class="galeria-item">Tratamiento facial</div>
+      <div class="galeria-item">Sala de spa</div>
+      <div class="galeria-item">Diseño de cejas</div>
+      <div class="galeria-item">Productos premium</div>
+    </div>
+  </section>
+
+  <!-- CONTACTO & BOOKING -->
+  <section id="contacto">
+    <div class="contacto-inner">
+      <div class="contacto-info fade-in">
+        <span class="eyebrow">Agenda tu cita</span>
+        <h2>Comienza tu <em>ritual</em></h2>
+        <p>
+          Escríbeme por WhatsApp o llena el formulario y me comunico contigo
+          en menos de 24 horas para confirmar tu reservación.
+        </p>
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <strong>Ubicación</strong>
+              Tu ciudad, tu estado — México
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-text">
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/521XXXXXXXXXX" style="color:var(--gold);text-decoration:none;">+52 1 XXX XXX XXXX</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div class="info-text">
+              <strong>Correo electrónico</strong>
+              hola@aveandrea.com
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🕐</div>
+            <div class="info-text">
+              <strong>Horario de atención</strong>
+              Lun–Sáb: 9:00 am – 7:00 pm
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-form fade-in">
+        <h3>Reservar cita</h3>
+        <p class="form-sub">Completa el formulario y te contactaremos a la brevedad</p>
+        <form onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label>Apellido</label>
+              <input type="text" placeholder="Tu apellido" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp / Teléfono</label>
+            <input type="tel" placeholder="+52 1 XXX XXX XXXX" required />
+          </div>
+          <div class="form-group">
+            <label>Servicio de interés</label>
+            <select required>
+              <option value="" disabled selected>Selecciona un servicio</option>
+              <option>Facial personalizado</option>
+              <option>Diseño de cejas</option>
+              <option>Tratamiento corporal</option>
+              <option>Manicura & pedicura</option>
+              <option>Depilación</option>
+              <option>Ritual AVE signature</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Fecha preferida</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>Mensaje (opcional)</label>
+            <textarea placeholder="¿Algo que deba saber antes de tu cita?"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.png" alt="AVE Logo" onerror="this.style.display='none'" />
+        <p>AVE es un espacio de estética y bienestar donde cada visita es una experiencia de cuidado personal auténtico.</p>
+        <div class="footer-social" style="margin-top:1.25rem">
+          <a href="https://instagram.com/" target="_blank" class="social-btn" aria-label="Instagram">&#9671;</a>
+          <a href="https://facebook.com/" target="_blank" class="social-btn" aria-label="Facebook">&#9671;</a>
+          <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="social-btn" aria-label="WhatsApp">&#9671;</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Faciales</a></li>
+          <li><a href="#servicios">Diseño de cejas</a></li>
+          <li><a href="#servicios">Corporales</a></li>
+          <li><a href="#servicios">Uñas & Manos</a></li>
+          <li><a href="#servicios">Rituales Spa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#sobre">Sobre mí</a></li>
+          <li><a href="#ritual">El ritual AVE</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Reservar cita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AVE — Andrea Veronica Elizondo. Todos los derechos reservados.</span>
+      <span>Hecho con ✦ en México</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    /* ── Mobile menu ── */
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('open');
+    });
+
+    document.getElementById('mobile-close').addEventListener('click', closeMobile);
+
+    function closeMobile() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+
+    /* ── Nav on scroll ── */
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      nav.style.background = window.scrollY > 50
+        ? 'rgba(250,248,244,0.92)'
+        : 'rgba(255,255,255,0.55)';
+    });
+
+    /* ── Form submit ── */
+    function submitForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '¡Solicitud enviada! ✓';
+      btn.style.background = 'linear-gradient(135deg, #a8b87a, #7a9a4a)';
+      setTimeout(() => {
+        btn.textContent = 'Enviar solicitud';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3500);
+    }
+  </script>
 
 </body>
 </html>
